@@ -1,13 +1,15 @@
-var request = require('supertest');
+var should = require('should');
+var lodash = require('lodash');
 
-function loginObject ()
+function loginResponse (res)
 {
+    return {
+        getToken: function () {
+            console.log(res.body);
+            return lodash.get(res, 'body.token');
+        },
+
+    }
 }
 
-loginObject.prototype.loginSuccess = function (res, token) {
-    res.body.token.should.not.be.equal(null);
-    res.body.token.should.be.instanceOf(String);
-    res.body.should.have.property('token').and.be.equal(token);
-}
-
-module.exports = new loginObject();
+module.exports = loginResponse;
