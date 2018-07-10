@@ -14,9 +14,9 @@ describe("Login Request", () => {
             var login = new loginResponse(res)
 
             //Assertions to check response
-            login.getToken().should.not.equal(null);
-            login.getToken().should.be.instanceOf(String);
-            //login.getToken().should.have.property('token').and.be.equal('QpwL5tke4Pnpja7X');
+            login.getTokenLoginSuccess().should.not.equal(null);
+            login.getTokenLoginSuccess().should.be.instanceOf(String);
+            login.getTokenLoginSuccess().should.be.equal('QpwL5tke4Pnpja7X');
 
             done();
         }
@@ -29,5 +29,28 @@ describe("Login Request", () => {
             .expect(200)
             .expect('Content-Type', /json/)
             .end(loginSuccessResponseExpectations);
+    });
+
+    it('should login unsuccessful', (done) => {
+        var loginUnsuccessResponseExpectations = function (err, res) {
+            if (err) return done(err);
+            var login = new loginResponse(res);
+
+            //Assertions to check response
+            login.getTokenLoginUnsuccess().should.not.equal(null);
+            login.getTokenLoginUnsuccess().should.be.instanceOf(String);
+            login.getTokenLoginUnsuccess().should.be.equal('Missing password');
+
+            done();
+        }
+
+        var params = { email: 'peter@klaven'};
+
+        request.post('/api/login')
+            .send(params)
+            .set('Accept', 'application/json')
+            .expect(400)
+            .expect('Content-Type', /json/)
+            .end(loginUnsuccessResponseExpectations);
     });
 });
