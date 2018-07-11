@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "test": "mocha test/request-definition/users-request.js"
+    "test": "mocha test/request-definition/*-request.js"
   },
   "dependencies": {
     "babel": "^6.23.0",

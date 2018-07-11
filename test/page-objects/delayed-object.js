@@ -13,6 +13,10 @@ function delayedResponse (res)
             //console.log(res.body);
             return lodash.get(res, 'body.per_page');
         },
+        getTotal: function () {
+            //console.log(res.body);
+            return lodash.get(res, 'body.total');
+        },
         getTotalPages: function () {
             //console.log(res.body);
             return lodash.get(res, 'body.total_pages');

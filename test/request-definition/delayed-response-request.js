@@ -1,6 +1,6 @@
 'use strict';
 
-var delayedResponse = require('../page-objects/delayed-object');
+var delayedResponseRequest = require('../page-objects/delayed-object');
 var supertest =  require('supertest');
 var chai= require('chai');
 var app = ('https://reqres.in');
@@ -11,16 +11,16 @@ describe("Delayed response", () => {
     it('should verify users', (done) => {
         var delayedResponseExpectations = function (err, res) {
             if (err) return done(err);
-            var delayed = new delayedResponse(res);
+            var delayed = new delayedResponseRequest(res);
 
             //Assertions to check response
-            delayed.getPage().sould.be.instanceOf(Number);
+            delayed.getPage().should.be.instanceOf(Number);
             delayed.getPage().should.be.equal(1);
-            delayed.getPerPage().sould.be.instanceOf(Number);
+            delayed.getPerPage().should.be.instanceOf(Number);
             delayed.getPerPage().should.be.equal(3);
-            delayed.getTotal().sould.be.instanceOf(Number);
+            delayed.getTotal().should.be.instanceOf(Number);
             delayed.getTotal().should.be.equal(12);
-            delayed.getTotalPages().sould.be.instanceOf(Number);
+            delayed.getTotalPages().should.be.instanceOf(Number);
             delayed.getTotalPages().should.be.equal(4);
 
             //Como iterar dentro do array
@@ -35,5 +35,5 @@ describe("Delayed response", () => {
             .expect(200)
             .expect('Content-Type', /json/)
             .end(delayedResponseExpectations);
-    });
+    }).timeout(10000);
 });
