@@ -8,6 +8,7 @@ var request = supertest(app);
 var should = require('should');
 
 describe("Login Request", () => {
+
     it('should login successful', (done) => {
         var loginSuccessResponseExpectations = function (err, res) {
             if (err) return done(err);
@@ -53,4 +54,28 @@ describe("Login Request", () => {
             .expect('Content-Type', /json/)
             .end(loginUnsuccessResponseExpectations);
     });
+
+    it('should login successful invalid parameters', (done) => {
+        var loginSuccessResponseExpectations = function (err, res) {
+            if (err) return done(err);
+            var login = new loginResponse(res)
+
+            //Assertions to check response
+            login.getTokenLoginSuccess().should.not.equal(null);
+            login.getTokenLoginSuccess().should.be.instanceOf(String);
+            login.getTokenLoginSuccess().should.be.equal('QpwL5tke4Pnpja7X');
+
+            done();
+        }
+
+        var params = { email: 'rui@oliveira', password: 'password1' };
+
+        request.post('/api/login')
+            .send(params)
+            .set('Accept', 'application/json')
+            .expect(200)
+            .expect('Content-Type', /json/)
+            .end(loginSuccessResponseExpectations);
+    });
+
 });
