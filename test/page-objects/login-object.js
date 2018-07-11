@@ -10,7 +10,6 @@ function loginResponse (res)
             return lodash.get(res, 'body.token');
         },
         getTokenLoginUnsuccess: function () {
-            //console.log(res.body);
             return lodash.get(res, 'body.error');
         }
     }

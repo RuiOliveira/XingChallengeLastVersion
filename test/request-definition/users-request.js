@@ -25,9 +25,6 @@ describe("Users", () => {
             users.getBody().should.have.property('data');
             users.getData().should.be.instanceOf(Array).and.have.length(3);
 
-
-            //Validate inside data
-
             done();
         }
 
@@ -55,8 +52,6 @@ describe("Users", () => {
 
             users.getDataAvatarSingleUser().should.be.instanceOf(String);
             users.getDataAvatarSingleUser().should.be.equal("https://s3.amazonaws.com/uifaces/faces/twitter/josephstein/128.jpg");
-
-            //Validate inside data
 
             done();
         }

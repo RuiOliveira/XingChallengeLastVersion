@@ -55,7 +55,6 @@ function ressourceResponse (res)
             return lodash.get(res, 'body.data.color');
         },
         getDataPantoneValueSingleResource: function () {
-            //console.log(res.body);
             return lodash.get(res, 'body.data.pantone_value');
         }
     }
