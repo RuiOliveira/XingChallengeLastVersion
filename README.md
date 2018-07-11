@@ -34,5 +34,21 @@ Notes:
 
 In case of tests that we need to send some data update(Post and patch http methods) of create (Put http method) I had thought to implement some tests in order to validate sending wrong data (login-request >> should login successful invalid parameters). In this cases even when i send wrong request values the response is the same and in my point of view the test should fail.
 
+##Run the project on docker:
 
+Source: 
+https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 
+##Build docker image
+
+Test locally:
+$ docker build -t <your username>/node-web-app .
+
+$ docker build -t <docker name>
+
+##Run docker image
+
+Test locally:
+$ docker run -p 49160:8080 -d <your username>/node-web-app
+
+docker run -p 8080:8081 dockerName
