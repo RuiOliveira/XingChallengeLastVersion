@@ -63,7 +63,12 @@ describe("Login Request", () => {
             //Assertions to check response
             login.getTokenLoginSuccess().should.not.equal(null);
             login.getTokenLoginSuccess().should.be.instanceOf(String);
+
+            //Should fail
             login.getTokenLoginSuccess().should.be.equal('QpwL5tke4Pnpja7X');
+
+            //Should pass this way
+            //login.getTokenLoginSuccess().should.not.be.equal('QpwL5tke4Pnpja7X');
 
             done();
         }

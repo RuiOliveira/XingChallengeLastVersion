@@ -1,32 +1,38 @@
-# Test for Applicants
-
-## Context
-
-As a QA in an Agile team, you’re part of a team developing a new cool feature, which mainly comprises a front-end application and a REST API. 
-As so you must ensure all front-end API dependent operations respond successfully, according to the business rules and any unwanted changes are detected prior to the production environment. 
-
-With this in mind your team needs to ensure that on each API deploy you have no fallbacks and REST operations are according the architecture. 
-Having this in mind you’ll prototype a proof-of-concept to the CTO so he understands how important this is.
+# Application
 
 ## Story
 
 Please build a project that ensures a rigid testing plan of the following REQRES API: **[https://reqres.in/](https://reqres.in/).**
 
-You’ll find the REST operations permitted in the link provided. Exploit the greater coverage as possible with all possible scenarios in mind. 
+You’ll find the REST operations permitted in the link provided. Exploit the greater coverage as possible with all possible scenarios in mind.
 
-## Enhancement
+##Strategy
 
-Choose *one* of the following and add it to your implementation:
+After some searchs i decide to cretae a node project and then i choove some tools.
 
-1. Test report: Add a reporting system to your implementation in order to have the visibility of your coverage. Please also have in mind that the report sytem should also provide an easy integration with a centralized test report system.
-2. Dockerization: Build a Docker support in order to take the API tests system to the CI&CD pipeline.	
+Supertest (https://www.npmjs.com/package/supertest) for testing HTTP requests;
+Mocha javascript framework running on node to make asynchronous testing
+Chai as BDD assertion library with should format
 
-## Requirements
+In order two create the test cases i try to adapt a page object model. So, I create a test folder and inside i create two folders:
+request-definition based on supertest framework template where i create the request to reqres and assertion definition, page-objects folder was created in order to organize the body responses and facilitate possible future maintenance. I used lodash in order to avoid Undefined res data which avoid that our tests blow up.
 
-Feel free to adopt the best technologies you find suitable for the end goal. Still we need to impose the following requirements:
+Reporting in only user mocha-reporter framework in order create pretty-prints and the user and the user can debug.
 
-1. Please use git as a version control system. Make sure that you have clear commit messages and understandable steps in your git-history ([How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/)).
-2. Document your work.
-3. Provide a README and instructions for how we can run your solution. **Note** It should be runnable with one command.
-4. Respect modularity and scalable solution for further test suites.
+
+##How to run project
+
+To run the project locally first you need to install the npm packages:
+
+npm install
+
+Run the tests:
+
+npm test
+
+Notes:
+
+In case of tests that we need to send some data update(Post and patch http methods) of create (Put http method) I had thought to implement some tests in order to validate sending wrong data (login-request >> should login successful invalid parameters). In this cases even when i send wrong request values the response is the same and in my point of view the test should fail.
+
+
 
