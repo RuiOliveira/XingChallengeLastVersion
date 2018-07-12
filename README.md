@@ -8,14 +8,14 @@ You’ll find the REST operations permitted in the link provided. Exploit the gr
 
 # Strategy
 
-After some searchs i decide to cretae a node project and then i choove some tools.
+After some search i decide to create a node project and then i choose some tools.
 
 Supertest (https://www.npmjs.com/package/supertest) for testing HTTP requests;
 Mocha javascript framework running on node to make asynchronous testing
 Chai as BDD assertion library with should format
 
 In order two create the test cases i try to adapt a page object model. So, I create a test folder and inside i create two folders:
-request-definition based on supertest framework template where i create the request to reqres and assertion definition, page-objects folder was created in order to organize the body responses and facilitate possible future maintenance. I used lodash in order to avoid Undefined res data which avoid that our tests blow up.
+request-definition based on supertest framework template where i create the request to reqres and assertion definition, page-objects folder was created in order to organize the body responses and facilitate possible future maintenance.
 
 Reporting in only user mocha-reporter framework in order create pretty-prints and the user and the user can debug.
 
@@ -41,14 +41,9 @@ https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
 
 # Build docker image
 
-Test locally:
-$ docker build -t <your username>/node-web-app .
-
-$ docker build -t <docker name>
+Test locally docker running:
+docker build -t 'container_name' . 
 
 # Run docker image
 
-Test locally:
-$ docker run -p 49160:8080 -d <your username>/node-web-app
-
-docker run -p 8080:8081 dockerName
+docker run 'container_name'

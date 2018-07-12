@@ -1,37 +1,33 @@
-var should = require('should');
-var lodash = require('lodash');
-
-//I select lodash in order to validate undifined responses
 function delayedResponse (res)
 {
     return {
         getPage: function () {
             //console.log(res.body);
-            return lodash.get(res, 'body.page');
+            return res.body.page;
         },
         getPerPage: function () {
-            return lodash.get(res, 'body.per_page');
+            return res.body.per_page;
         },
         getTotal: function () {
-            return lodash.get(res, 'body.total');
+            return res.body.total;
         },
         getTotalPages: function () {
-            return lodash.get(res, 'body.total_pages');
+            return res.body.total_pages;
         },
         getData: function () {
-            return lodash.get(res, 'body.data');
+            return res.body.data;
         },
         getDataId: function () {
-            return lodash.get(res, 'body.data.id');
+            return res.body.data.id;
         },
         getDataFirstName: function () {
-            return lodash.get(res, 'body.first_name');
+            return res.body.first_name;
         },
         getDataLasName: function () {
-            return lodash.get(res, 'body.last_name');
+            return res.body.last_name;
         },
         getDataAvatar: function () {
-            return lodash.get(res, 'body.avatar');
+            return res.body.avatar;
         }
     }
 }

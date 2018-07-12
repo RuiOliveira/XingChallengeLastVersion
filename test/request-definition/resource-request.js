@@ -23,6 +23,31 @@ describe("Resource request", () => {
 
     it('should check list of resources', (done) => {
         var listOfResourcesResponseExpectations = function (err, res) {
+            var expectedResources = [
+                {
+                    "id": 1,
+                    "name": "cerulean",
+                    "year": 2000,
+                    "color": "#98B2D1",
+                    "pantone_value": "15-4020"
+                },
+                {
+                    "id": 2,
+                    "name": "fuchsia rose",
+                    "year": 2001,
+                    "color": "#C74375",
+                    "pantone_value": "17-2031"
+                },
+                {
+                    "id": 3,
+                    "name": "true red",
+                    "year": 2002,
+                    "color": "#BF1932",
+                    "pantone_value": "19-1664"
+                }
+            ];
+
+
             if (err) return done(err);
             var resource = new resourceResponse(res);
 
@@ -37,6 +62,7 @@ describe("Resource request", () => {
             resource.getTotalPages().should.be.equal(4);
             resource.getData().should.be.instanceOf(Array).and.have.length(3);
             resource.getBody().should.have.property('data');
+            JSON.stringify(resource.getData()).should.be.equal(JSON.stringify(expectedResources));
 
             done();
         }

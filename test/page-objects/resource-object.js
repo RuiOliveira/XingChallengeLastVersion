@@ -1,61 +1,57 @@
-var should = require('should');
-var lodash = require('lodash');
-
-//I select lodash in order to validate undifined responses
 function ressourceResponse (res)
 {
     return {
         getBody: function () {
-            return lodash.get(res, 'body');
+            return res.body;
         },
         getPage: function () {
-            return lodash.get(res, 'body.page');
+            return res.body.page;
         },
         getPerPage: function () {
-            return lodash.get(res, 'body.per_page');
+            return res.body.per_page;
         },
         getTotal: function () {
-            return lodash.get(res, 'body.total');
+            return res.body.total;
         },
         getTotalPages: function () {
-            return lodash.get(res, 'body.total_pages');
+            return res.body.total_pages;
         },
         getData: function () {
-            return lodash.get(res, 'body.data');
+            return res.body.data;
         },
         getDataId: function () {
             //console.log(res.body);
-            return lodash.get(res, 'body.data.id');
+            return res.body.data.id;
         },
         getDataName: function () {
-            return lodash.get(res, 'body.name');
+            return res.body.name;
         },
         getDataYear: function () {
-            return lodash.get(res, 'body.year');
+            return res.body.year;
         },
         getDataColor: function () {
-            return lodash.get(res, 'body.color');
+            return res.body.color;
         },
         getDataPantoneValue: function () {
-            return lodash.get(res, 'body.pantone_value');
+            return res.body.pantone_value;
         },
         getDataSingleResource: function () {
-            return lodash.get(res, 'body.data');
+            return res.body.data;
         },
         getDataIdSingleResource: function () {
-            return lodash.get(res, 'body.data.id');
+            return res.body.data.id;
         },
         getDataNameSingleResource: function () {
-            return lodash.get(res, 'body.data.name');
+            return res.body.data.name;
         },
         getDataYearSingleResource: function () {
-            return lodash.get(res, 'body.data.year');
+            return res.body.data.year;
         },
         getDataColorSingleResource: function () {
-            return lodash.get(res, 'body.data.color');
+            return res.body.data.color;
         },
         getDataPantoneValueSingleResource: function () {
-            return lodash.get(res, 'body.data.pantone_value');
+            return res.body.data.pantone_value;
         }
     }
 }
